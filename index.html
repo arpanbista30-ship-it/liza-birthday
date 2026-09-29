@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Happy Birthday Liza! 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-gradient-1: #ffe3ec;
+  --bg-gradient-2: #fff4d6;
+  --accent: #ff5c8a;
+  --accent-2: #ffb703;
+  --text-dark: #4a3350;
+  --card-bg: rgba(255,255,255,.75);
+  --radius: 24px;
+  --font-fun: 'Pacifico', cursive;
+  --font-body: 'Nunito', sans-serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  background: linear-gradient(160deg, var(--bg-gradient-1), var(--bg-gradient-2));
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+section { max-width: 900px; margin: 0 auto; padding: 70px 24px; }
+
+.hero { text-align:center; padding-top: 100px; position:relative; }
+.hero h1 {
+  font-family: var(--font-fun);
+  font-size: clamp(2.6rem, 8vw, 5rem);
+  color: var(--accent);
+  animation: pop .9s cubic-bezier(.2,1.6,.4,1) both;
+}
+.hero p.sub { font-size:1.25rem; margin-top:14px; opacity:.85; }
+.badge {
+  display:inline-block; margin-top:26px; padding:10px 22px;
+  background: var(--accent-2); color:#fff; font-weight:800;
+  border-radius:999px; box-shadow:0 6px 0 rgba(0,0,0,.08);
+  transform: rotate(-3deg);
+}
+@keyframes pop { from { transform: scale(.4); opacity:0 } to { transform: scale(1); opacity:1 } }
+
+.countdown { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:36px; }
+.count-box {
+  background: var(--card-bg); backdrop-filter: blur(6px);
+  border-radius: var(--radius); padding:18px 22px; min-width:88px;
+  box-shadow:0 8px 24px rgba(0,0,0,.07);
+}
+.count-box span { display:block; font-size:2rem; font-weight:800; color:var(--accent); }
+.count-box small { text-transform:uppercase; letter-spacing:.08em; font-size:.7rem; opacity:.7; }
+
+h2.title { font-family:var(--font-fun); color:var(--accent); font-size:2.2rem; margin-bottom:26px; text-align:center; }
+.gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
+.photo {
+  aspect-ratio:1/1; border-radius:var(--radius);
+  background: repeating-linear-gradient(45deg,#f3e8ff,#f3e8ff 12px,#fdf2f8 12px,#fdf2f8 24px);
+  display:flex; align-items:center; justify-content:center;
+  font-weight:800; color:#c084fc; transition:.3s; cursor:pointer;
+  box-shadow:0 8px 20px rgba(0,0,0,.06);
+  overflow:hidden;
+}
+.photo:hover { transform: translateY(-6px) rotate(-1.5deg); }
+.photo img { width:100%; height:100%; object-fit:cover; border-radius:var(--radius); }
+
+.reasons { list-style:none; display:grid; gap:14px; }
+.reasons li {
+  background: var(--card-bg); padding:16px 20px; border-radius:16px;
+  border-left:6px solid var(--accent); font-weight:600;
+  opacity:0; transform:translateY(20px); transition:.6s;
+}
+.reasons li.show { opacity:1; transform:none; }
+
+.reveal-box { text-align:center; }
+#secretMsg {
+  display:none; margin-top:22px; background:var(--card-bg);
+  padding:28px; border-radius:var(--radius); font-size:1.15rem; line-height:1.7;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+button.btn {
+  font-family:var(--font-body); font-weight:800; font-size:1.05rem;
+  background:var(--accent); color:#fff; border:none; cursor:pointer;
+  padding:14px 32px; border-radius:999px; transition:.2s;
+  box-shadow:0 6px 0 rgba(0,0,0,.12);
+}
+button.btn:active { transform:translateY(4px); box-shadow:none; }
+
+footer { text-align:center; padding:40px; opacity:.7; font-size:.9rem; }
+
+#confetti { position:fixed; inset:0; pointer-events:none; z-index:99; }
+</style>
+</head>
+<body>
+<canvas id="confetti"></canvas>
+
+<section class="hero">
+  <h1>Happy Birthday, Liza!</h1>
+  <p class="sub">Yes, I actually made you a whole website. You're welcome 😌</p>
+  <div class="badge" id="dateBadge">🎈 Loading...</div>
+  <div class="countdown" id="countdown"></div>
+</section>
+
+<section>
+  <h2 class="title">A little gallery 💖</h2>
+  <div class="gallery">
+    <div class="photo">
+      <img src="IMG_20260929_000934_936.jpg" alt="Liza Photo 1">
+    </div>
+    <div class="photo">
+      <img src="IMG_20260929_000937_116.jpg" alt="Liza Photo 2">
+    </div>
+    <div class="photo">
+      <img src="IMG_20260929_000944_657.jpg" alt="Liza Photo 3">
+    </div>
+    <div class="photo">
+      <img src="IMG_20260929_000951_236.jpg" alt="Liza Photo 4">
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 class="title">Things I'd say if we talked more 💬</h2>
+  <ul class="reasons">
+    <li>You've always had the most ridiculous laugh — and honestly, it's contagious.</li>
+    <li>Even when life keeps us busy, you're still my favorite person to roll my eyes at.</li>
+    <li>I hope this year is ridiculously good to you. You deserve that.</li>
+    <li>You make the world way more fun just by existing in it.</li>
+  </ul>
+</section>
+
+<section class="reveal-box">
+  <h2 class="title">One last thing...</h2>
+  <button class="btn" onclick="reveal()">Press me 🎁</button>
+  <div id="secretMsg">
+    Happy Birthday, Liza 🎂 We might not talk every day, but I'm glad
+    you exist. Hope today is as fun and weird and wonderful as you are.
+    Love you, weirdo. ❤️
+  </div>
+</section>
+
+<footer>Made with love (and questionable coding skills) · October 1 🎉</footer>
+
+<script>
+const BIRTH_DATE = new Date('2026-10-01T00:00:00');
+
+function tick() {
+  const now = new Date();
+  let diff = BIRTH_DATE - now;
+  const el = document.getElementById('countdown');
+  if (diff <= 0) {
+    el.innerHTML = '<div class="count-box"><span>🎉</span><small>It\'s today!</small></div>';
+    document.getElementById('dateBadge').textContent = '🎂 It\'s Liza Day!';
+    return;
+  }
+  const d = Math.floor(diff / 864e5);
+  const h = Math.floor(diff % 864e5 / 36e5);
+  const m = Math.floor(diff % 36e5 / 6e4);
+  const s = Math.floor(diff % 6e4 / 1e3);
+  document.getElementById('dateBadge').textContent = `🎈 October 1st — ${d} days to go`;
+  el.innerHTML = [[d,'days'],[h,'hours'],[m,'mins'],[s,'secs']]
+    .map(([v,l]) => `<div class="count-box"><span>${v}</span><small>${l}</small></div>`).join('');
+}
+tick(); setInterval(tick, 1000);
+
+const obs = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && e.target.classList.add('show')), {threshold:.2});
+document.querySelectorAll('.reasons li').forEach(li => obs.observe(li));
+
+function reveal() {
+  document.getElementById('secretMsg').style.display = 'block';
+  confettiBurst(180);
+}
+
+const cvs = document.getElementById('confetti'), ctx = cvs.getContext('2d');
+let pieces = [];
+function resize(){ cvs.width = innerWidth; cvs.height = innerHeight; }
+resize(); addEventListener('resize', resize);
+function confettiBurst(n){
+  const colors = ['#ff5c8a','#ffb703','#8b5cf6','#22c55e','#38bdf8'];
+  for(let i=0;i<n;i++) pieces.push({
+    x: Math.random()*cvs.width, y:-20, r: 4+Math.random()*6,
+    c: colors[Math.random()*colors.length|0], vy: 2+Math.random()*3,
+    vx: -1.5+Math.random()*3, rot: Math.random()*Math.PI
+  });
+}
+(function loop(){
+  ctx.clearRect(0,0,cvs.width,cvs.height);
+  pieces.forEach(p=>{
+    p.y+=p.vy; p.x+=p.vx; p.rot+=.08;
+    ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot);
+    ctx.fillStyle=p.c; ctx.fillRect(-p.r,-p.r,p.r*2,p.r*1.2); ctx.restore();
+  });
+  pieces = pieces.filter(p=>p.y<cvs.height+30);
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
